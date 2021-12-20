@@ -1,6 +1,4 @@
-*, ::after, ::before {
-    box-sizing: border-box;
-}
+
 /* fonts */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,700;1,200;1,400&display=swap');
 html {
@@ -9,15 +7,15 @@ html {
 /* variables */
 :root {
     /* colors */
-    --primary-100: #dfeae8;
-    --primary-200: #c0d6d2;
-    --primary-300: #a0c1bb;
-    --primary-400: #81ada5;
-    --primary-500: #61988E;
-    --primary-600: #4e7a72;
-    --primary-700: #3a5b55;
-    --primary-800: #273d39;
-    --primary-900: #131e1c;
+    --primary-100: #d4e4e8;
+    --primary-200: #a9c9d2;
+    --primary-300: #7daebb;
+    --primary-400: #5293a5;
+    --primary-500: #27788e;
+    --primary-600: #1f6072;
+    --primary-700: #174855;
+    --primary-800: #103039;
+    --primary-900: #08181c;
 
     --grey-200: #E2E8F0;
     --grey-300: #CBD5E1;
@@ -73,7 +71,6 @@ h4 {
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
     line-height: 1.25;
-    margin-bottom: 0.75rem;
     font-family: var(--ff-primary);
 }
 h1 {
@@ -89,51 +86,33 @@ h4 {
     font-size: 0.875rem;
   }
 p {
-    margin-bottom: 1.25rem;
-    color: var(--clr-grey-5);
-  }
-  @media screen and (min-width: 800px) {
-    h1 {
-      font-size: 4rem;
-    }
-    h2 {
-      font-size: 2.5rem;
-    }
-    h3 {
-      font-size: 1.75rem;
-    }
-    h4 {
-      font-size: 1rem;
-    }
-    body {
-      font-size: 1rem;
-    }
-    h1,
-    h2,
-    h3,
-    h4 {
-      line-height: 1;
-    }
+    color: var(--grey-700);
   }
 
   /* Global Classes */
 
+  *, ::after, ::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
   .btn {
     text-transform: uppercase;
     background: var(--primary-900);
-    color: var(--clr-white);
+    color: var(--white);
     padding: 0.375rem 0.75rem;
-    letter-spacing: var(--spacing);
+    letter-spacing: var(--letterSpacing);
     display: inline-block;
     transition: var(--transition);
     font-size: 0.875rem;
-    border: 2px solid var(--clr-black);
+    border: 2px solid var(--black);
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    border-radius: var(--radius);
+    border-radius: var(--borderRadius);
   }
   .btn:hover {
-    color: var(--clr-white);
+    color: var(--white);
     background: var(--clr-black);
   }
   .alert {
@@ -151,78 +130,103 @@ p {
     color: #721c24;
     background: #f8d7da;
   }
+  
   .alert-success {
     color: #155724;
     background: #d4edda;
   }
 
   /* App Styles */
-
+  
+  header {
+    margin: 1rem auto;
+    width: 100%;
+    text-align: center;
+    background: var(--primary-200);
+    color: var(--primary-800);
+  }
   main {
       min-height: 100vh;
       display: grid;
       background: var(--grey-400);
   }
   .container {
-      /* display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 25% 25%;
-      grid-template-areas: 
-        "form form"
-        "fridge pantry"
-        "basket cupboard"; */
-      background: var(--primary-300);
-      height: 50%;
+      background: var(--grey-300);
+      height: 80vh;
+      padding: 2rem;
   }
-  /* .grocery-form {
-    grid-area: form;
-  } */
-  .grocery-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      grid-template-areas:
-        "fridge pantry"
-        "basket cupboard";
+  /* .grocery-list {
+
   }
   .fridge {
-    grid-area: fridge;
+
   }
   .pantry {
-    grid-area: pantry;
+
   }
   .basket {
-      grid-area: basket;
+
   }
   .cupboard {
-      grid-area: cupboard;
-  }
+
+  } */
   .grocery-form h3 {
-    color: var(--clr-primary-1);
+    color: var(--primary-900);
     margin-bottom: 1.5rem;
     text-align: center;
   }
   .form-control {
     display: flex;
+    flex-direction: column;
     justify-content: center;
   }
-  #grocery {
+  
+  .form-control * {
     padding: 0.25rem;
-    padding-left: 1rem;
-    background: var(--primary-500);
-    border-top-left-radius: var(--borderRadius);
-    border-bottom-left-radius: var(--borderRadius);
     border-color: transparent;
     font-size: 1rem;
+  }
+  #grocery {
+    padding-left: 1rem;
+    background: var(--primary-500);
+
     flex: 1 0 auto;
-    color: var(--clr-grey-5);
+    color: var(--grey-200);
+    font-size: 1.25rem;
+  }
+  #grocery:hover {
+    background: var(--primary-400);
   }
   #grocery::placeholder {
-    font-family: var(--ff-secondary);
-    color: var(--clr-grey-5);
+    font-style: italic;
+    font-weight: 200;
+    color: var(--grey-700);
+    font-size: 1rem;
+  }
+  #location {
+    background: var(--primary-200);
+    cursor: grab;
+    border-color: transparent;
+    transition: var(--transition);
+  }
+  #location:hover {
+    border: 0.25rem dashed var(--primary-800);
+  }
+  .expr-container {
+    display: grid;
+    justify-items: center;
+    background: var(--primary-800);
+    color: var(--primary-200);
+  }
+  #expiration {
+    background: var(--primary-400);
+    border-radius: var(--borderRadius);
+  }
+  #expiration:hover {
+    background: var(--primary-300);
   }
   .submit-btn {
-    background: var(--clr-primary-8);
+    background: var(--primary-600);
     border-color: transparent;
     flex: 0 0 5rem;
     display: grid;
@@ -230,16 +234,13 @@ p {
     padding: 0.25rem;
     text-transform: capitalize;
     letter-spacing: 2px;
-    border-top-right-radius: var(--radius);
-    border-bottom-right-radius: var(--radius);
     cursor: pointer;
-    content: var(--clr-primary-5);
     transition: var(--transition);
-    font-size: 0.85rem;
+    color: var(--white)
   }
   .submit-btn:hover {
-    background: var(--clr-primary-5);
-    color: var(--clr-white);
+    background: var(--primary-500);
+    color: var(--black);
   }
   
   .grocery-container {
@@ -257,15 +258,15 @@ p {
     margin-bottom: 0.5rem;
     transition: var(--transition);
     padding: 0.25rem 1rem;
-    border-radius: var(--radius);
+    border-radius: var(--borderRadius);
     text-transform: capitalize;
   }
   .grocery-item:hover {
-    color: var(--clr-grey-5);
+    color: var(--grey-700);
     background: var(--clr-grey-10);
   }
   .grocery-item:hover .title {
-    color: var(--clr-grey-5);
+    color: var(--grey-700);
   }
   .title {
     margin-bottom: 0;
@@ -305,7 +306,7 @@ p {
     color: var(--clr-red-light);
     margin: 0 auto;
     font-size: 0.85rem;
-    letter-spacing: var(--spacing);
+    letter-spacing: var(--letterSpacing);
     cursor: pointer;
     transition: var(--transition);
     margin-top: 1.25rem;
@@ -316,5 +317,42 @@ p {
   .health-bar {
     height: 1.25rem;
     width: 50%;
+    display: none;
   }
   
+  /* | Media Queries | */
+
+  @media screen and (min-width: 800px) {
+    h1 {
+      font-size: 4rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 1.75rem;
+    }
+    h4 {
+      font-size: 1rem;
+    }
+    body {
+      font-size: 1rem;
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+      line-height: 1;
+    }
+    .form-control {
+      flex-direction: row;
+    }
+    #grocery {
+      border-top-left-radius: var(--borderRadius);
+      border-bottom-left-radius: var(--borderRadius);
+    }
+    .submit-btn {
+      border-top-right-radius: var(--borderRadius);
+      border-bottom-right-radius: var(--borderRadius);
+    }
+  }

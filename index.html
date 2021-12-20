@@ -9,7 +9,6 @@
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <!-- styles -->
-    <link rel="stylesheet" href="assets/normalize.css">
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 
@@ -33,8 +32,11 @@
                         <option value="basket">Basket</option>
                         <option value="cupboard">Cupboard</option>
                     </select>
-                    <input type="date" id="expiration" name="expiration" value="2022-01-01" min="2021-01-01"
-                        max="2022-12-31">
+                    <div class="expr-container">
+                        <label for="expiration">Set <span style="color: #c55454">expiration: </span></label>
+                        <input type="date" id="expiration" name="expiration" value="2022-01-01" min="2021-01-01"
+                            max="2022-12-31">
+                    </div>
                     <button type="submit" class="submit-btn">Submit</button>
                 </div>
             </form>
