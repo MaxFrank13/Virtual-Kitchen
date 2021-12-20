@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Kitchen</title>
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- styles -->
+    <link rel="stylesheet" href="assets/normalize.css">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Virtual Kitchen</h1>
+        <p>A quick and easy way to monitor the food available in one's kitchen!</p>
+    </header>
+    <main>
+        <div class="container">
+            <!-- Form -->
+            <form class="grocery-form">
+                <p class="alert"></p>
+                <h3>Grocery Helper</h3>
+                <div class="form-control">
+                    <input id="grocery" type="text" placeholder="e.g. tomatoes">
+                    <select name="location" id="location">
+                        <option value="">Where does it go?</option>
+                        <option value="pantry">Pantry</option>
+                        <option value="fridge">Fridge</option>
+                        <option value="basket">Basket</option>
+                        <option value="cupboard">Cupboard</option>
+                    </select>
+                    <input type="date" id="expiration" name="expiration" value="2022-01-01" min="2021-01-01"
+                        max="2022-12-31">
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </form>
+            <!-- List -->
+            <div class="grocery-container">
+                <div class="grocery-list"></div>
+                <button class="clear-btn">clear items</button>
+            </div>
+        </div>
+    </main>
+    <!-- javascript -->
+    <script src="app.js"></script>
+</body>
+
+</html>
