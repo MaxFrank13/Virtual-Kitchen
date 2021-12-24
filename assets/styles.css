@@ -1,10 +1,10 @@
 
-/* fonts */
+/* | Fonts | */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,700;1,200;1,400&display=swap');
 html {
     font-size: 100%;
 }
-/* variables */
+/* | Variables | */
 :root {
     /* colors */
     --primary-100: #d4e4e8;
@@ -28,7 +28,7 @@ html {
 
     --black: #222; 
     --white: #fff;
-    --red-light: #f8d7da;
+    --red-light: #e9b1b5;
     --red-dark: #842029;
     --green-light: #d1e7dd;
     --green-dark: #0f5132;
@@ -49,7 +49,8 @@ html {
     --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.8);
     --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
 }
-/* Global Styles */
+
+  /* | Global Styles | */
 
 body {
     font-family: var(--ff-primary);
@@ -89,8 +90,6 @@ p {
     color: var(--grey-700);
   }
 
-  /* Global Classes */
-
   *, ::after, ::before {
     box-sizing: border-box;
     margin: 0;
@@ -113,7 +112,7 @@ p {
   }
   .btn:hover {
     color: var(--white);
-    background: var(--clr-black);
+    background: var(--black);
   }
   .alert {
     margin-bottom: 1rem;
@@ -123,7 +122,7 @@ p {
     text-align: center;
     font-size: 0.7rem;
     border-radius: 0.25rem;
-    letter-spacing: var(--spacing);
+    letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
   }
   .alert-danger {
@@ -136,8 +135,10 @@ p {
     background: #d4edda;
   }
 
-  /* App Styles */
-  
+  /* | App Styles | */
+
+
+  /* general layout */
   header {
     margin: 1rem auto;
     width: 100%;
@@ -152,24 +153,11 @@ p {
   }
   .container {
       background: var(--grey-300);
-      height: 80vh;
       padding: 2rem;
   }
-  /* .grocery-list {
 
-  }
-  .fridge {
+  /* form */
 
-  }
-  .pantry {
-
-  }
-  .basket {
-
-  }
-  .cupboard {
-
-  } */
   .grocery-form h3 {
     color: var(--primary-900);
     margin-bottom: 1.5rem;
@@ -243,6 +231,8 @@ p {
     color: var(--black);
   }
   
+  /* Kitchen */
+
   .grocery-container {
     margin-top: 2rem;
     transition: var(--transition);
@@ -251,6 +241,20 @@ p {
   .show-container {
     visibility: visible;
   }
+  .grocery-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .kitchen-section {
+    min-height: 20rem;
+    text-align: center;
+    padding: 0.5rem;
+    border: 3px solid var(--primary-900);
+    border-radius: var(--borderRadius);
+  }
+
   .grocery-item {
     display: flex;
     align-items: center;
@@ -263,17 +267,25 @@ p {
   }
   .grocery-item:hover {
     color: var(--grey-700);
-    background: var(--clr-grey-10);
+    background: var(--grey-900);
+    opacity: .8;
   }
   .grocery-item:hover .title {
-    color: var(--grey-700);
+    color: var(--grey-200);
   }
+
   .title {
     margin-bottom: 0;
-    color: var(--clr-grey-1);
+    color: var(--grey-700);
     letter-spacing: 2px;
     transition: var(--transition);
   }
+     
+  .health-bar {
+    height: 1.25rem;
+    width: 50%;
+  }
+
   .edit-btn,
   .delete-btn {
     background: transparent;
@@ -284,16 +296,16 @@ p {
     transition: var(--transition);
   }
   .edit-btn {
-    color: var(--clr-green-light);
+    color: var(--green-dark);
   }
   .edit-btn:hover {
-    color: var(--clr-green-dark);
+    color: var(--green-light);
   }
   .delete-btn {
-    color: var(--clr-red-light);
+    color: var(--red-dark);
   }
   .delete-btn:hover {
-    color: var(--clr-red-dark);
+    color: var(--red-light);
   }
   .clear-btn {
     text-transform: capitalize;
@@ -301,24 +313,22 @@ p {
     height: 1.5rem;
     display: grid;
     align-items: center;
-    background: transparent;
+    background: var(--red-dark);
     border-color: transparent;
-    color: var(--clr-red-light);
+    color: var(--red-light);
     margin: 0 auto;
     font-size: 0.85rem;
     letter-spacing: var(--letterSpacing);
     cursor: pointer;
     transition: var(--transition);
     margin-top: 1.25rem;
+    border-radius: var(--borderRadius)  ;
   }
   .clear-btn:hover {
-    color: var(--clr-red-dark);
+    box-shadow: var(--shadow-2);
+    color: var(--primary-300);
   }
-  .health-bar {
-    height: 1.25rem;
-    width: 50%;
-    display: none;
-  }
+
   
   /* | Media Queries | */
 

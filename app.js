@@ -40,7 +40,6 @@ var recipes = {
         "pickles"
     ]
 }
-// App will receive input from a form line (drop-down, checkbox, text) that provides food name, where it belongs, and how long until it expires
 
 // | Variables |
 
@@ -53,8 +52,6 @@ const submitBtn = document.querySelector(".submit-btn");
 const container = document.querySelector(".grocery-container");
 const list = document.querySelector(".grocery-list");
 const clearBtn = document.querySelector(".clear-btn");
-
-const lctn = spot.value;
 
 let editElement;
 let editFlag = false;
@@ -110,7 +107,9 @@ function addItem(e) {
       const editBtn = element.querySelector(".edit-btn");
       editBtn.addEventListener("click", editItem);
       
-      list.appendChild(element);
+      let lctn_div = document.getElementById(lctn);
+
+      lctn_div.appendChild(element);
 
       displayAlert("item added to the list", "success");
 
@@ -118,6 +117,7 @@ function addItem(e) {
 
       addToLocalStorage(id, value, expire, lctn);
       setBackToDefault();
+      setHealthBars();
 
     } else if (value !== "" && editFlag) {
         editElement.innerHTML = value;
@@ -143,12 +143,12 @@ function displayAlert(text, action) {
 }
 
 function clearItems() {
-    const items = document.querySelectorAll(".grocery-item");
-    if (items.length > 0) {
-        items.forEach(function(item) {
-            list.removeChild(item);
-        });
-    }
+
+    var elements = document.getElementsByClassName("grocery-item");
+    while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+
     container.classList.remove("show-container");
     displayAlert("empty list", "danger");
     setBackToDefault();
@@ -159,8 +159,12 @@ function deleteItem(e) {
     const element = e.currentTarget.parentElement.parentElement;
     console.log(element);
     const id = element.dataset.id;
+    const lctn = element.classList[1];
 
-    list.removeChild(element);
+    let parent_div = document.getElementById(lctn);
+    console.log(lctn);
+    console.log(parent_div);
+    parent_div.removeChild(element);
 
     if (list.children.length === 0) {
         container.classList.remove("show-container");
@@ -197,14 +201,12 @@ function setHealthBars() {
     items = items.map(function(item) {
         const exprTotal = item.expire - item.id;
         const exprRemaining = item.expire - currentDay;
-        console.log(item.expire - item.id);
-        console.log(item.expire - currentDay);
+
         const percentRemaining = exprRemaining / exprTotal * 100;
-        console.log(percentRemaining);
-        console.log(item.value);
+
         let healthBar = document.getElementById(item.value);
         healthBar.style.width = `${percentRemaining}%`;
-        console.log(healthBar);
+
         if (percentRemaining > 70) {
             healthBar.style.background = "green";
         } else if (percentRemaining > 25) {
@@ -300,9 +302,8 @@ function createListItem(id, value, expire, lctn) {
     editBtn.addEventListener("click", editItem);
   
     // append child
-    list.appendChild(element);
-}
+    let lctn_div = document.getElementById(lctn);
+    console.log(lctn_div);
 
-// App will sort items by where they belong
-// Each item will have a health bar indicating how long it has until expiration
-// The goal is to provide a pleasant visual representation of the food available in one's kitchen and to also help the user avoid letting anything go to waste
+    lctn_div.appendChild(element);
+}
