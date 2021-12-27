@@ -248,6 +248,9 @@ p {
     gap: 0.5rem;
   }
   .kitchen-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     min-height: 20rem;
     text-align: center;
     padding: 0.5rem;
@@ -284,6 +287,7 @@ p {
   .health-bar {
     height: 1.25rem;
     width: 50%;
+    flex-basis: 50%;
   }
 
   .edit-btn,
