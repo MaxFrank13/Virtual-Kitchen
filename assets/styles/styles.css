@@ -1,6 +1,6 @@
 
 /* | Fonts | */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,700;1,200;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,500;0,700;1,200;1,400&family=Shizuru&display=swap');
 html {
     font-size: 100%;
 }
@@ -34,6 +34,7 @@ html {
     --green-dark: #0f5132;
     /* font styles */
     --ff-primary: "Josephin Sans", sans-serif;
+    --ff-secondary: "Shizuru", cursive;
     /* other */
     --backgroundColor: var(--grey-200);
     --textColor: var(--grey-900);
@@ -140,11 +141,12 @@ p {
 
   /* general layout */
   header {
-    margin: 1rem auto;
+    position: fixed;
     width: 100%;
     text-align: center;
     background: var(--primary-200);
     color: var(--primary-800);
+    z-index: 99;
   }
   main {
       min-height: 100vh;
@@ -154,6 +156,28 @@ p {
   .container {
       background: var(--grey-300);
       padding: 2rem;
+  }
+
+  /* nav */
+
+  .links-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .link {
+    font-family: ff;
+    padding: 0.2rem;
+    color: var(--textColor);
+    background: palegreen;
+    border-radius: var(--borderRadius);
+    transition: var(--transition);
+  }
+
+  .link:active {
+    background: orange;
+    transition: var(--transition);
   }
 
   /* form */
@@ -236,26 +260,42 @@ p {
   .grocery-container {
     margin-top: 2rem;
     transition: var(--transition);
-    visibility: hidden;
-  }
-  .show-container {
-    visibility: visible;
   }
   .grocery-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     gap: 0.5rem;
   }
+  .section-img {
+    width: 20rem;
+    height: 20rem;
+    object-fit: contain;
+    background: var(--white);
+    padding: 0.5rem;
+  }
+  .section-img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  .remove-img {
+    display: none;
+  }
+  .section-container {
+    text-align: center;
+    padding: 1rem;
+  }
   .kitchen-section {
-    display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     min-height: 20rem;
-    text-align: center;
-    padding: 0.5rem;
+    text-align: right;
+    padding: 1rem;
+    padding-bottom: 2rem;
     border: 3px solid var(--primary-900);
     border-radius: var(--borderRadius);
+    display: none;
+  }
+  .show-section {
+    display: flex;
   }
 
   .grocery-item {
@@ -264,7 +304,7 @@ p {
     justify-content: space-between;
     margin-bottom: 0.5rem;
     transition: var(--transition);
-    padding: 0.25rem 1rem;
+    padding: 0.25rem;
     border-radius: var(--borderRadius);
     text-transform: capitalize;
   }
@@ -276,7 +316,9 @@ p {
   .grocery-item:hover .title {
     color: var(--grey-200);
   }
-
+  .close:hover {
+    cursor: pointer;
+  }
   .title {
     margin-bottom: 0;
     color: var(--grey-700);
@@ -368,5 +410,11 @@ p {
     .submit-btn {
       border-top-right-radius: var(--borderRadius);
       border-bottom-right-radius: var(--borderRadius);
+    }
+    .grocery-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.5rem;
     }
   }

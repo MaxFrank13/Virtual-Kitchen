@@ -1,46 +1,3 @@
-var recipes = {
-    name: "fried rice",
-    ingredients: [
-        "rice",
-        "carrots",
-        "tofu",
-        "ginger"
-    ],
-    name: "lasagna",
-    ingredients: [
-        "cheese",
-        "red sauce",
-        "basil",
-        "lasagna noodles"
-    ], 
-    name: "pesto trenette",
-    ingredients: [
-        "pesto",
-        "cheese",
-        "noodles"
-    ], 
-    name: "personal pizzas",
-    ingredients: [
-        "dough",
-        "cheese",
-        "red sauce"
-    ], 
-    name: "burgers",
-    ingredients: [
-        "buns",
-        "burgers",
-        "tomato",
-        "pickles"
-    ], 
-    name: "falafel",
-    ingredients: [
-        "chickpeas",
-        "tahini",
-        "hummus",
-        "pickles"
-    ]
-}
-
 // | Variables |
 
 const form = document.querySelector(".grocery-form");
@@ -56,6 +13,34 @@ const clearBtn = document.querySelector(".clear-btn");
 let editElement;
 let editFlag = false;
 let editID = "";
+
+// const images = document.querySelector(".section-img");
+// console.log(images);
+// const closer = document.querySelector(".close");
+// console.log(closer);
+
+document.querySelectorAll(".section-img").forEach(item => {
+    item.addEventListener("click", expandList)
+});
+
+function expandList(e) {
+    let target_div = e.currentTarget.nextElementSibling;
+    console.log(target_div);
+    target_div.classList.add("show-section");
+    e.currentTarget.classList.add("remove-img");
+};
+
+document.querySelectorAll(".close").forEach(item => {
+    item.addEventListener("click", minimizeItems)
+});
+
+function minimizeItems(e) {
+    let target = e.currentTarget.parentElement;
+    console.log(target.previousElementSibling);
+    target.classList.remove("show-section");
+    target.previousElementSibling.classList.remove("remove-img");
+};  
+
 
 // | Event Listeners |
 
@@ -303,7 +288,49 @@ function createListItem(id, value, expire, lctn) {
   
     // append child
     let lctn_div = document.getElementById(lctn);
-    console.log(lctn_div);
 
     lctn_div.appendChild(element);
+}
+
+var recipes = {
+    name: "fried rice",
+    ingredients: [
+        "rice",
+        "carrots",
+        "tofu",
+        "ginger"
+    ],
+    name: "lasagna",
+    ingredients: [
+        "cheese",
+        "red sauce",
+        "basil",
+        "lasagna noodles"
+    ], 
+    name: "pesto trenette",
+    ingredients: [
+        "pesto",
+        "cheese",
+        "noodles"
+    ], 
+    name: "personal pizzas",
+    ingredients: [
+        "dough",
+        "cheese",
+        "red sauce"
+    ], 
+    name: "burgers",
+    ingredients: [
+        "buns",
+        "burgers",
+        "tomato",
+        "pickles"
+    ], 
+    name: "falafel",
+    ingredients: [
+        "chickpeas",
+        "tahini",
+        "hummus",
+        "pickles"
+    ]
 }

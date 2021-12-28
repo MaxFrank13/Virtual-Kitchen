@@ -9,13 +9,21 @@
 	<!-- font-awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
 	<!-- styles -->
-	<link rel="stylesheet" href="assets/styles.css">
+	<link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 
 <body>
 	<header>
 		<h1>Virtual Kitchen</h1>
 		<p>A quick and easy way to monitor the food available in one's kitchen!</p>
+		<nav>
+			<ul class="links-container">
+				<li><a href="#fridge_div" class="link">fridge</a></li>
+				<li><a href="#pantry_div" class="link">pantry</a></li>
+				<li><a href="#cupboard_div" class="link">cupboard</a></li>
+				<li><a href="#basket_div" class="link">basket</a></li>
+			</ul>
+		</nav>
 	</header>
 	<main>
 		<div class="container">
@@ -27,10 +35,10 @@
 					<input id="grocery" type="text" placeholder="e.g. tomatoes">
 					<select name="location" id="location">
 						<option value="">Where does it go?</option>
-						<option value="pantry">Pantry</option>
-						<option value="fridge">Fridge</option>
+						<option value="pantry">Fridge</option>
+						<option value="fridge">Pantry</option>
 						<option value="basket">Basket</option>
-						<option value="cupboard">Cupboard</option>
+						<option value="cupboard">Snacks</option>
 					</select>
 					<div class="expr-container">
 						<label for="expiration">Set <span style="color: #c55454">expiration: </span></label>
@@ -43,17 +51,30 @@
 			<!-- List -->
 			<div class="grocery-container">
 				<div class="grocery-list">
-					<div class="kitchen-section" id="fridge">
-						<h3>fridge</h3>
+					<div class="section-container" id="fridge_div">
+						<img class="section-img" src="assets/images/refrigerator.jpg" alt="refrigerator">
+						
+						<div class="kitchen-section" id="fridge">
+							<i class="fas fa-window-minimize close"></i>
+						</div>
 					</div>
-					<div class="kitchen-section" id="pantry">
-						<h3>pantry</h3>
+					<div class="section-container" id="pantry_div">
+						<img class="section-img" src="assets/images/pantry.jpg" alt="pantry">
+						<div class="kitchen-section" id="pantry">
+							<i class="fas fa-window-minimize close"></i>
+						</div>
 					</div>
-					<div class="kitchen-section" id="cupboard">
-						<h3>cupboard</h3>
+					<div class="section-container" id="cupboard_div">
+						<img class="section-img" src="assets/images/snacks.jpg" alt="snacks">
+						<div class="kitchen-section" id="cupboard">
+							<i class="fas fa-window-minimize close"></i>
+						</div>
 					</div>
-					<div class="kitchen-section" id="basket">
-						<h3>basket</h3>
+					<div class="section-container" id="basket_div">
+						<img class="section-img" src="assets/images/basket.jpg" alt="basket">
+						<div class="kitchen-section" id="basket">
+							<i class="fas fa-window-minimize close"></i>
+						</div>
 					</div>
 				</div>
 				<button class="clear-btn">clear items</button>
