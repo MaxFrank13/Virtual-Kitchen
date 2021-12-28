@@ -191,11 +191,9 @@ p {
   }
 
   .fixed-nav {
-    position: fixed;
-    flex-direction: column;
-    top: 40%;
-    gap: 1.5rem;
+    position: static;
   }
+
 
   /* form */
 
@@ -214,6 +212,7 @@ p {
   .form-control * {
     padding: 0.25rem;
     border-color: transparent;
+    border-radius: var(--borderRadius);
     font-size: 1rem;
   }
   #grocery {
@@ -285,11 +284,11 @@ p {
     justify-content: center;
   }
   .section-img {
-    width: 20rem;
-    height: 20rem;
     object-fit: contain;
     background: var(--white);
     padding: 0.5rem;
+    height: 100%;
+    width: 100%;
   }
   .section-img:hover {
     transform: scale(1.1);
@@ -300,13 +299,12 @@ p {
   }
   .section-container {
     padding: 1rem;
-    min-width: 20rem;
+    height: 18rem;
+    width: 18rem;
   }
   .kitchen-section {
     flex-direction: column;
-    justify-content: space-evenly;
-    min-height: 20rem;
-    min-width: 20rem;
+    justify-content: flex-start;
     background: var(--grey-300);
     text-align: right;
     padding: 1rem;
@@ -336,6 +334,9 @@ p {
   }
   .grocery-item:hover .title {
     color: var(--grey-200);
+  }
+  .close {
+    padding-bottom: 1rem;
   }
   .close:hover {
     cursor: pointer;
@@ -431,6 +432,17 @@ p {
     }
   }
 
+  @media screen and (min-width: 600px) {
+      
+    .fixed-nav {
+      position: fixed;
+      flex-direction: column;
+      top: 40%;
+      left: 10%;
+      gap: 1.5rem;
+    }
+  }
+
   @media screen and (min-width: 800px) {
     h1 {
       font-size: 4rem;
@@ -457,6 +469,9 @@ p {
       flex-direction: row;
       gap: 0;
     }
+    .form-control * {
+      border-radius: 0;
+    }
     #grocery {
       border-top-left-radius: var(--borderRadius);
       border-bottom-left-radius: var(--borderRadius);
@@ -470,8 +485,17 @@ p {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 0.5rem;
+      align-items: center;
+      justify-items: center;
     }
     .fixed-nav {
       display: none;
+    }
+  }
+
+  @media screen and (min-width: 1050px) {
+    .kitchen-section {
+      height: 28rem;
+      width: 28rem;
     }
   }
