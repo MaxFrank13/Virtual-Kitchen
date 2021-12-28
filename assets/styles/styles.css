@@ -17,6 +17,10 @@ html {
     --primary-800: #103039;
     --primary-900: #08181c;
 
+    --secondary-400: #dbbf8c;
+    --secondary-500: #cfaa65;
+    --secondary-600: #9b804c;
+
     --grey-200: #E2E8F0;
     --grey-300: #CBD5E1;
     --grey-400: #94A3B8;
@@ -45,13 +49,17 @@ html {
     --fixed-width: 600px;
 
     /* box shadow */
-    --shadow-1:0 1px 2px 0 rgba(0, 0, 0, 0.6);
-    --shadow-2:  0 4px 6px -2px rgba(0, 0, 0, 0.6);
+    --shadow-1: 0 1px 2px 0 rgba(0, 0, 0, 0.6);
+    --shadow-2: 0 4px 6px -2px rgba(0, 0, 0, 0.6);
     --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.8);
     --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
 }
 
   /* | Global Styles | */
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
     font-family: var(--ff-primary);
@@ -169,12 +177,15 @@ p {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    padding: 0.75rem;
+    background: var(--primary-500);
+    border-radius: 10px;
   }
 
   .link {
     font-family: var(--ff-primary);
     font-size: 1.15rem;
-    padding: 0.5rem;
+    padding: 0.35rem;
     color: var(--primary-800);
     background: rgb(96, 212, 96);
     border-radius: var(--borderRadius);
@@ -183,10 +194,11 @@ p {
   .link:hover {
     background: var(--primary-700);
     color: var(--grey-400);
+    transition: var(--transition);
   }
 
   .link:active {
-    background: orange;
+    background: var(--secondary-500);
     transition: var(--transition);
   }
 
@@ -417,6 +429,14 @@ p {
     z-index: 100;
   }
 
+  footer {
+    height: 5rem;
+    background: var(--primary-900);
+    color: var(--primary-200);
+    text-align: center;
+    padding-top: 2rem;
+  }
+
   
   /* | Media Queries | */
 
@@ -438,8 +458,14 @@ p {
       position: fixed;
       flex-direction: column;
       top: 40%;
-      left: 10%;
+      left: 7%;
       gap: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .fixed-nav:hover {
+      transition: var(--transition);
+      background: var(--secondary-500);
     }
   }
 
@@ -494,7 +520,7 @@ p {
   }
 
   @media screen and (min-width: 1050px) {
-    .kitchen-section {
+    .section-container {
       height: 28rem;
       width: 28rem;
     }
