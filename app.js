@@ -19,35 +19,41 @@ let editID = "";
 // const closer = document.querySelector(".close");
 // console.log(closer);
 
-document.querySelectorAll(".section-img").forEach(item => {
-    item.addEventListener("click", expandList)
-});
-
-function expandList(e) {
-    let target_div = e.currentTarget.nextElementSibling;
-    console.log(target_div);
-    target_div.classList.add("show-section");
-    e.currentTarget.classList.add("remove-img");
-};
-
-document.querySelectorAll(".close").forEach(item => {
-    item.addEventListener("click", minimizeItems)
-});
-
-function minimizeItems(e) {
-    let target = e.currentTarget.parentElement;
-    console.log(target.previousElementSibling);
-    target.classList.remove("show-section");
-    target.previousElementSibling.classList.remove("remove-img");
-};  
-
+window.addEventListener("scroll", function () {
+    const header = document.querySelector("header");
+    const navbar = document.querySelector(".links-container");
+    const topLink = document.querySelector(".top-link");
+    const scrollHeight = window.pageYOffset;
+    const navHeight = header.getBoundingClientRect().height;
+    if (scrollHeight > navHeight) {
+      navbar.classList.add("fixed-nav");
+    } else {
+      navbar.classList.remove("fixed-nav");
+    }
+    // setup back to top link
+  
+    if (scrollHeight > 400) {
+      topLink.classList.add("show-link");
+    } else {
+      topLink.classList.remove("show-link");
+    }
+  });
 
 // | Event Listeners |
 
 form.addEventListener("submit", addItem);
+
 clearBtn.addEventListener("click", clearItems);
+
 window.addEventListener("DOMContentLoaded", setupItems);
 
+document.querySelectorAll(".section-img").forEach(item => {
+    item.addEventListener("click", expandList)
+});
+
+document.querySelectorAll(".close").forEach(item => {
+    item.addEventListener("click", minimizeItems)
+});
 
 // | Functions |
 
@@ -83,7 +89,7 @@ function addItem(e) {
             <i class="fas fa-trash"></i>
           </button>
         </div>
-        <div class="health-bar" id="${value}"></div>
+        <div class="health-bar" data-expire="${attr2.value}" id="${value}"></div>
       `;
 
       // add event listeners to buttons made in template string
@@ -201,6 +207,20 @@ function setHealthBars() {
         }
     })
 }
+
+function expandList(e) {
+    let target_div = e.currentTarget.nextElementSibling;
+    console.log(target_div);
+    target_div.classList.add("show-section");
+    e.currentTarget.classList.add("remove-img");
+};
+
+function minimizeItems(e) {
+    let target = e.currentTarget.parentElement;
+    console.log(target.previousElementSibling);
+    target.classList.remove("show-section");
+    target.previousElementSibling.classList.remove("remove-img");
+};
 
 // | Local Storage |
 

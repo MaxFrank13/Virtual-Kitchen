@@ -16,7 +16,7 @@
 	<header>
 		<h1>Virtual Kitchen</h1>
 		<p>A quick and easy way to monitor the food available in one's kitchen!</p>
-		<nav>
+		<nav id="home">
 			<ul class="links-container">
 				<li><a href="#fridge_div" class="link">fridge</a></li>
 				<li><a href="#pantry_div" class="link">pantry</a></li>
@@ -26,7 +26,7 @@
 		</nav>
 	</header>
 	<main>
-		<div class="container">
+		
 			<!-- Form -->
 			<form class="grocery-form">
 				<p class="alert"></p>
@@ -35,8 +35,8 @@
 					<input id="grocery" type="text" placeholder="e.g. tomatoes">
 					<select name="location" id="location">
 						<option value="">Where does it go?</option>
-						<option value="pantry">Fridge</option>
-						<option value="fridge">Pantry</option>
+						<option value="pantry">Pantry</option>
+						<option value="fridge">Fridge</option>
 						<option value="basket">Basket</option>
 						<option value="cupboard">Snacks</option>
 					</select>
@@ -79,8 +79,14 @@
 				</div>
 				<button class="clear-btn">clear items</button>
 			</div>
-		</div>
+		
 	</main>
+	<footer>
+
+	</footer>
+	<a class="top-link" href="#home">
+		<i class="fas fa-arrow-up"></i>
+	</a>
 	<!-- javascript -->
 	<script src="app.js"></script>
 </body>

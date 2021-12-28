@@ -88,6 +88,7 @@ h4 {
     font-size: 0.875rem;
   }
 p {
+    font-size: 1rem;
     color: var(--grey-700);
   }
 
@@ -116,12 +117,13 @@ p {
     background: var(--black);
   }
   .alert {
-    margin-bottom: 1rem;
-    height: 1.25rem;
+    position: fixed;
+    right: 40%;
+    padding: 0.5rem;
     display: grid;
     align-items: center;
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 1.2rem;
     border-radius: 0.25rem;
     letter-spacing: var(--letterSpacing);
     text-transform: capitalize;
@@ -141,24 +143,27 @@ p {
 
   /* general layout */
   header {
-    position: fixed;
     width: 100%;
     text-align: center;
     background: var(--primary-200);
     color: var(--primary-800);
     z-index: 99;
+    padding: 1rem;
   }
+
+  header * {
+    margin-top: 0.25rem;
+  }
+
   main {
-      min-height: 100vh;
-      display: grid;
-      background: var(--grey-400);
-  }
-  .container {
-      background: var(--grey-300);
-      padding: 2rem;
+    min-height: 100vh;
+    display: grid;
+    background: var(--grey-400);
+    padding: 2rem;
   }
 
   /* nav */
+
 
   .links-container {
     display: flex;
@@ -167,17 +172,29 @@ p {
   }
 
   .link {
-    font-family: ff;
-    padding: 0.2rem;
-    color: var(--textColor);
-    background: palegreen;
+    font-family: var(--ff-primary);
+    font-size: 1.15rem;
+    padding: 0.5rem;
+    color: var(--primary-800);
+    background: rgb(96, 212, 96);
     border-radius: var(--borderRadius);
     transition: var(--transition);
+  }
+  .link:hover {
+    background: var(--primary-700);
+    color: var(--grey-400);
   }
 
   .link:active {
     background: orange;
     transition: var(--transition);
+  }
+
+  .fixed-nav {
+    position: fixed;
+    flex-direction: column;
+    top: 40%;
+    gap: 1.5rem;
   }
 
   /* form */
@@ -191,6 +208,7 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 0.5rem;
   }
   
   .form-control * {
@@ -264,6 +282,7 @@ p {
   .grocery-list {
     display: grid;
     gap: 0.5rem;
+    justify-content: center;
   }
   .section-img {
     width: 20rem;
@@ -280,13 +299,15 @@ p {
     display: none;
   }
   .section-container {
-    text-align: center;
     padding: 1rem;
+    min-width: 20rem;
   }
   .kitchen-section {
     flex-direction: column;
     justify-content: space-evenly;
     min-height: 20rem;
+    min-width: 20rem;
+    background: var(--grey-300);
     text-align: right;
     padding: 1rem;
     padding-bottom: 2rem;
@@ -374,9 +395,41 @@ p {
     box-shadow: var(--shadow-2);
     color: var(--primary-300);
   }
+  .top-link {
+    display: grid;
+    place-items: center;
+    font-size: 1.25rem;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    background: var(--primary-600);
+    color: var(--primary-200);
+    width: 2rem;
+    height: 2rem;
+    animation: bounce 5s ease-in-out infinite;
+    visibility: hidden;
+    z-index: -100;
+  }
+
+  .show-link {
+    visibility: visible;
+    z-index: 100;
+  }
 
   
   /* | Media Queries | */
+
+  @keyframes bounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
   @media screen and (min-width: 800px) {
     h1 {
@@ -402,6 +455,7 @@ p {
     }
     .form-control {
       flex-direction: row;
+      gap: 0;
     }
     #grocery {
       border-top-left-radius: var(--borderRadius);
@@ -416,5 +470,8 @@ p {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       gap: 0.5rem;
+    }
+    .fixed-nav {
+      display: none;
     }
   }
