@@ -341,45 +341,19 @@ function createListItem(id, value, expire, lctn) {
     lctn_div.appendChild(element);
 }
 
-var recipes = {
-    name: "fried rice",
-    ingredients: [
-        "rice",
-        "carrots",
-        "tofu",
-        "ginger"
-    ],
-    name: "lasagna",
-    ingredients: [
-        "cheese",
-        "red sauce",
-        "basil",
-        "lasagna noodles"
-    ],
-    name: "pesto trenette",
-    ingredients: [
-        "pesto",
-        "cheese",
-        "noodles"
-    ],
-    name: "personal pizzas",
-    ingredients: [
-        "dough",
-        "cheese",
-        "red sauce"
-    ],
-    name: "burgers",
-    ingredients: [
-        "buns",
-        "burgers",
-        "tomato",
-        "pickles"
-    ],
-    name: "falafel",
-    ingredients: [
-        "chickpeas",
-        "tahini",
-        "hummus",
-        "pickles"
-    ]
+const ids = [715594, 644387, 782601, 794349]
+const thisKey = "3083c710a2ee48e6a621d640e9c24d3f";
+function getRecipes() {
+    // const requestUrl = `https://api.spoonacular.com/recipes/complexSearch?diet=vegan&apiKey=${thisKey}`
+    const requestUrl = `https://api.spoonacular.com/recipes/716426/information?apiKey=${thisKey}`
+    
+    fetch(requestUrl)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+        })
 }
+
+getRecipes();
